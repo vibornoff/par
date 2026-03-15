@@ -1,0 +1,3 @@
+# Send only the helper scripts to the Docker daemon; OS subdirectories
+# contain only a Dockerfile and are referenced via -f / not needed in context.
+bookworm/

@@ -1,0 +1,6 @@
+[submodule "sbctl/0.18"]
+	path = packages/sbctl/0.18
+	url = https://github.com/Foxboron/sbctl.git
+[submodule "tzpfms/v0.4.1"]
+	path = packages/tzpfms/v0.4.1
+	url = https://git.sr.ht/~nabijaczleweli/tzpfms
