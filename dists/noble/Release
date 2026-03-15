@@ -1,0 +1,28 @@
+Architectures: amd64
+Codename: noble
+Components: main
+Date: Mon, 16 Mar 2026 00:36:28 +0000
+Description: Personal APT Repository – noble
+Label: personal
+Origin: Personal APT Repository
+Suite: noble
+MD5Sum:
+ 8c7ef30c4fb73265c6259817724565dd              200 Release
+ 727fba33781a749772bac555b733afe5             4283 main/binary-amd64/Packages
+ c28fcb5b969ffe2ff80344c0a1c64087             1762 main/binary-amd64/Packages.bz2
+ 568b81122239c047cc7ee691aa5f3a27             1614 main/binary-amd64/Packages.gz
+SHA1:
+ 4b9a50f2a22c66640a9f5f9572d99e4fd415872f              200 Release
+ c07cc8257194105408ddd64c826e671362f7c7dd             4283 main/binary-amd64/Packages
+ e6264b491ac1b884f9d34dcb7a18448d0d7150ab             1762 main/binary-amd64/Packages.bz2
+ bc6f13e99b7394008353fd941b3fca494f316270             1614 main/binary-amd64/Packages.gz
+SHA256:
+ 9ca7e8b07cd39aa07e5a6428c9246fc229d948fc453996f3547a7131e4fdcf53              200 Release
+ 35a9df82842900bcb1221c8fa72459a34e6f8972d0b38b51f32c19eba3808d22             4283 main/binary-amd64/Packages
+ eeb714c7778b504ac6db3c2d052d45a4ea1bcaf5d6f512f1d42dcf8989958500             1762 main/binary-amd64/Packages.bz2
+ efcd98e4ccf6ba0586bb54e086e52f020002387df2afc71f39fc44277b6d5690             1614 main/binary-amd64/Packages.gz
+SHA512:
+ 1937a076a68f78402a24b60a8526a72288aa93091b6b6b7d56315d5409469b154209eea8b942212231cfada9c1410dc034c322ca4348e031e92adc92d18d6fa2              200 Release
+ 57cb0f771aa560a7ca248b7d2684bfca242a4bc8930522ed7aa4479c6dd1d3433484487704eb1ebe0695bf9c177ec8e5e28506b21c8c4314997c3715cea628aa             4283 main/binary-amd64/Packages
+ e230e0c472e0d8e6dc8a3258670a4c5c1c21056c822d10c83ebb75a3ccd5784d0e4b6f0c9f74b7faad0728fb03f87630154815d0810f88ace3b4e091f8ed3ef1             1762 main/binary-amd64/Packages.bz2
+ 695a8ae358c4209eedaacc96f3f717bd3afcaae0be783a448db02562da0e143092ee4a0d612f21b5ad36c343b61d468611ebbe059de1e32f24b79e0ef4e0a97b             1614 main/binary-amd64/Packages.gz

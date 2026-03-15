@@ -1,0 +1,28 @@
+Architectures: amd64
+Codename: resolute
+Components: main
+Date: Mon, 16 Mar 2026 00:36:28 +0000
+Description: Personal APT Repository – resolute
+Label: personal
+Origin: Personal APT Repository
+Suite: resolute
+MD5Sum:
+ 313f72f1eaa74dec384e397bc5aca108              209 Release
+ bf2b361755b1ab80a144cbfd6a07692a             4298 main/binary-amd64/Packages
+ 24174371b8e553cfe09d732a299ee871             1767 main/binary-amd64/Packages.bz2
+ 04a3e9d5dbe7d2c82c366e3d4badcf63             1613 main/binary-amd64/Packages.gz
+SHA1:
+ 353d0d3e3a3a8348e046de6fad5355ff8a17e2f6              209 Release
+ f714134dc9886014d0e31b3d3383d83da2b26333             4298 main/binary-amd64/Packages
+ 0bcf7932deb2d04f4c2cafaae3461b38af7319d0             1767 main/binary-amd64/Packages.bz2
+ 02e9518ea8521bfd1e476620870a66501f7d5d8d             1613 main/binary-amd64/Packages.gz
+SHA256:
+ aa6c5ae745972bc64ecb4452282508122350a4fc3d4eaa735c7123e391c503ba              209 Release
+ 77349965b27364d47a67fb0a28a6a96683544fb45e9ce974746bd0621437fdb3             4298 main/binary-amd64/Packages
+ 1853b372f1f2918b4837f4aa459717fe0734be6eccc0e800aa7b5f4e3cb377f1             1767 main/binary-amd64/Packages.bz2
+ d70ddffadb2cec13226897c2ff3878d7a5a0e7e7e78c1bf15b59ca3c762ca28d             1613 main/binary-amd64/Packages.gz
+SHA512:
+ 54d861ac10e2728c9bae988979b30fe3a477d324074a09167b0291d7e4556bb07cd2deb3aacd50b70108343b759c681552003bc1e4e4c9010d5ed12a5ba16954              209 Release
+ 6f95a36855b8d4636f4d863d127d3091f845a193170fd4def107738742eb3c5e278166974403c8bd3abcfe2c433ecb306aabf82a297b78a9f77668c841f73a19             4298 main/binary-amd64/Packages
+ c38c66dbfb0175813930eed25ad49ae338bcd0086222b04aba7ab823056d6420909e3c5e2ca7edff9e1948fabdafec9ae462c92e0bc5c99b5a8ec373578402d5             1767 main/binary-amd64/Packages.bz2
+ e6e26f55dc4758c2db212291b043206d050dfc9dc45a964138159a6bad795139fca8dc9f8d96b3ef891309faf30ad9cd8599db73ed8a064063bfa7a29f100683             1613 main/binary-amd64/Packages.gz

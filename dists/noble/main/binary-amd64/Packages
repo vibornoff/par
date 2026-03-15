@@ -1,0 +1,88 @@
+Package: tzpfms-common
+Architecture: amd64
+Version: 0.4.1-1+vibornoff1
+Priority: optional
+Section: admin
+Maintainer: automated build <build@localhost>
+Depends: libc6 (>= 2.17), libnvpair3linux (>= 0.8.2), libzfs4linux (>= 0.8.2)
+Filename: pool/noble/tzpfms-common_0.4.1-1+vibornoff1_amd64.deb
+Size: 27850
+MD5sum: e5be5283a72f232ed01d1f3f549d3a50
+SHA1: 4f64a2b25f60af0408fd8a1492b9f3bb4c34353b
+SHA256: 52e313ff00c746ebe0f9a8a6916d22c30761757c1078052a2bf7714e7fe74e99
+SHA512: ae6ed6bc47ef7dd5937779f422d60e6b341175917914190951dbce5a288fe3b33282e032bb55ba6f139a155a38bcf59eed1b83fbcc325bcd60898260a5e03730
+Description: TPM-based encryption keys for ZFS datasets -- common binaries
+ tzpfms generates and seals random raw encryption keys to the TPM, tying ZFS
+ dataset encryption to the platform.
+ This package provides the common zfs-tpm-list binary and systemd integration.
+
+Package: tzpfms-dracut
+Architecture: all
+Version: 0.4.1-1+vibornoff1
+Priority: optional
+Section: admin
+Maintainer: automated build <build@localhost>
+Depends: tzpfms-common (= 0.4.1-1+vibornoff1), zfs-dracut
+Suggests: tzpfms-tpm2 (= 0.4.1-1+vibornoff1), tzpfms-tpm1x (= 0.4.1-1+vibornoff1)
+Filename: pool/noble/tzpfms-dracut_0.4.1-1+vibornoff1_all.deb
+Size: 4232
+MD5sum: ecdb48558b3b8cdb37e47b7193c46d25
+SHA1: 0fbbfec035fe97e1dfb748422ec9ed9c0f024202
+SHA256: ff43bf4454ab553383a32911590ea51fcddcc6aff517ffb1e837fb14783231b7
+SHA512: 99de7cd40e1ab28a87b3e49e8c375480eceb1fd79dc9da010e9b762999518a91e0695c2342bfe61d57911f7accc4c79f57d92424ae891aabdcdb5843b2cd8319
+Description: TPM-based encryption keys for ZFS datasets -- dracut integration
+ dracut module for tzpfms, enabling ZFS-on-root early-boot key loading.
+
+Package: tzpfms-initramfs
+Architecture: all
+Version: 0.4.1-1+vibornoff1
+Priority: optional
+Section: admin
+Maintainer: automated build <build@localhost>
+Depends: tzpfms-common (= 0.4.1-1+vibornoff1), zfs-initramfs
+Suggests: tzpfms-tpm2 (= 0.4.1-1+vibornoff1), tzpfms-tpm1x (= 0.4.1-1+vibornoff1)
+Filename: pool/noble/tzpfms-initramfs_0.4.1-1+vibornoff1_all.deb
+Size: 3174
+MD5sum: 7094cf96b246749a78edb6e9c01fbef6
+SHA1: a267aa0a2def8145d11a2e7aedd1b0f014652a12
+SHA256: d278a84793b926c159ca600b9c5ade2685d82e19415197d30bbcfb3bf4538abb
+SHA512: 22b7eb2de24ab101417b0dcdab353f4c7d40bd9aca44ebc71e65c20fae6ee0106f1a799060564fc26b2d079a118622ff98501029a56fc7f9698b65c22f6ad4ad
+Description: TPM-based encryption keys for ZFS datasets -- initramfs-tools integration
+ initramfs-tools hooks for tzpfms, enabling ZFS-on-root early-boot key loading.
+
+Package: tzpfms-tpm1x
+Architecture: amd64
+Version: 0.4.1-1+vibornoff1
+Priority: optional
+Section: admin
+Maintainer: automated build <build@localhost>
+Depends: libc6 (>= 2.17), libnvpair3linux (>= 0.8.2), libtspi1 (>= 0.3.1), libzfs4linux (>= 0.8.2)
+Recommends: tzpfms-common (= 0.4.1-1+vibornoff1), trousers
+Filename: pool/noble/tzpfms-tpm1x_0.4.1-1+vibornoff1_amd64.deb
+Size: 106906
+MD5sum: 244c39bbfb360385556364d719f47802
+SHA1: f4a21c6d2d6d0bfb1fd6f31bbf3ec77cfb9ccec3
+SHA256: 5f89dc345a65b12682c431ef69049afd266112da285ab91546a97f245190d9e7
+SHA512: 669abead4b15194d4dc5763a1fcb9b1523683bd7035179471e4697f98c605bf04057d767ada68f9f00f4b65cb284367051f7f536bdb7e925a41d1b536f6597c9
+Description: TPM-based encryption keys for ZFS datasets -- TPM 1.x binaries
+ Provides zfs-tpm1x-change-key, zfs-tpm1x-clear-key, and zfs-tpm1x-load-key
+ for TPM 1.x back-end.
+
+Package: tzpfms-tpm2
+Architecture: amd64
+Version: 0.4.1-1+vibornoff1
+Priority: optional
+Section: admin
+Maintainer: automated build <build@localhost>
+Depends: libc6 (>= 2.17), libnvpair3linux (>= 0.8.2), libssl3t64 (>= 3.0.0), libtss2-esys-3.0.2-0t64 (>= 2.3.1), libtss2-rc0t64 (>= 3.0.1), libzfs4linux (>= 0.8.2)
+Recommends: tzpfms-common (= 0.4.1-1+vibornoff1)
+Filename: pool/noble/tzpfms-tpm2_0.4.1-1+vibornoff1_amd64.deb
+Size: 166520
+MD5sum: 535787f631bb84c35b2d30d64ae08280
+SHA1: 09af5cd9baeb35afbfe678dca2665b50bd1c4f32
+SHA256: e40ff9ce5858d906c52761c443e683a9409e888fa5526040b05da8ec4599a546
+SHA512: 7229e30659b129827ecd467f10d086729470c98f22d9619a197ef15fab91b0433cb72fe387af012f168ed09e745acb78d60120950788811766bff3dcedc64969
+Description: TPM-based encryption keys for ZFS datasets -- TPM2 binaries
+ Provides zfs-tpm2-change-key, zfs-tpm2-clear-key, and zfs-tpm2-load-key
+ for TPM 2.0 back-end.
+
