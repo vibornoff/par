@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Runtime library names on Ubuntu noble (24.04).
-# libzfs6linux = OpenZFS 2.2.x; tss2/ssl packages carry the Ubuntu t64 suffix.
-ENV LIBZFS_PKG="libzfs6linux" \
+# libzfs4linux = OpenZFS 2.2.x; tss2/ssl packages carry the Ubuntu t64 suffix.
+ENV LIBZFS_PKG="libzfs4linux" \
     LIBSSL_PKG="libssl3t64" \
     LIBTSS2_ESYS_PKG="libtss2-esys-3.0.2-0t64" \
     LIBTSS2_RC_PKG="libtss2-rc0t64"

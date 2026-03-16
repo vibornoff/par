@@ -1,5 +1,3 @@
-# golang:1.23-bookworm bundles a recent Go toolchain on top of debian:bookworm.
-# Debian bookworm's own golang-go (1.19) is too old for sbctl (requires >= 1.20).
 FROM golang:1.24-bookworm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

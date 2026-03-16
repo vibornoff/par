@@ -17,7 +17,7 @@
 # Tools required: apt-ftparchive (package apt-utils), gpg (for signing)
 #
 # APT sources.list entry (example for noble):
-#   deb [signed-by=/etc/apt/keyrings/repo.asc] https://<user>.github.io/<repo>/ noble main
+#   deb [arch=amd64 signed-by=/etc/apt/keyrings/repo.asc] https://<user>.github.io/<repo>/ noble main
 #
 # Note on cross-distro packages (e.g. sbctl built on bookworm):
 #   sbctl lives in pool/bookworm/ and is served under the bookworm codename.
@@ -116,5 +116,5 @@ echo "==> Done."
 echo
 echo "APT sources.list entry:"
 for OS in "${OS_LIST[@]}"; do
-    echo "  deb [signed-by=/etc/apt/keyrings/repo.asc] https://<user>.github.io/<repo>/ $OS main"
+    echo "  deb [arch=amd64 signed-by=/etc/apt/keyrings/repo.asc] https://<user>.github.io/<repo>/ $OS main"
 done

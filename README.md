@@ -26,7 +26,7 @@ sudo curl -fsSL https://vibornoff.github.io/par/pubkey.asc \
 Replace `<codename>` with your distro codename (`bookworm`, `noble`, or `resolute`).
 
 ```sh
-echo "deb [signed-by=/etc/apt/keyrings/vibornoff.asc] \
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/vibornoff.asc] \
 https://vibornoff.github.io/par/ <codename> main" \
 | sudo tee /etc/apt/sources.list.d/vibornoff.list
 ```
@@ -36,7 +36,7 @@ https://vibornoff.github.io/par/ <codename> main" \
 > line alongside your Ubuntu line:
 >
 > ```sh
-> echo "deb [signed-by=/etc/apt/keyrings/vibornoff.asc] \
+> echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/vibornoff.asc] \
 > https://vibornoff.github.io/par/ bookworm main" \
 > | sudo tee -a /etc/apt/sources.list.d/vibornoff.list
 > ```
