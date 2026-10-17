@@ -140,6 +140,13 @@ scripts/index.sh --key-id=<key> noble
 After signing, `repo/dists/<os>/InRelease` and `repo/dists/<os>/Release.gpg` are
 created alongside an updated `repo/pubkey.asc`.
 
+The signing key must not be bound by SHA-1 self-signatures only. apt ≥ 3.0 (Debian trixie) verifies with
+`sqv`, whose policy has rejected them since 2026-02-01 (`Signing key … is not bound`), and the repository then
+counts as unsigned. `index.sh` checks the key before signing and prints the `gpg --quick-set-expire` commands
+that re-issue the bindings with SHA-512. After that, sign every dist again: `sqv` checks the binding at the time
+of each signature, so InRelease files signed before the new bindings stay invalid. Clients have to download
+`pubkey.asc` again.
+
 ## Adding a new package version
 
 1. Add the new version as a submodule pinned to the desired tag:
