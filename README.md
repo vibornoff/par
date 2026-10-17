@@ -6,10 +6,10 @@ Pages.
 
 ## Contents
 
-| Package                                            | Version | Distros         | Upstream                           |
-| -------------------------------------------------- | ------- | --------------- | ---------------------------------- |
-| [sbctl](https://github.com/Foxboron/sbctl)         | 0.18    | bookworm        | Secure Boot key manager            |
-| [tzpfms](https://git.sr.ht/~nabijaczleweli/tzpfms) | v0.4.1  | noble, resolute | TPM-backed encryption keys for ZFS |
+| Package                                            | Version | Distros                           | Upstream                           |
+| -------------------------------------------------- | ------- | --------------------------------- | ---------------------------------- |
+| [sbctl](https://github.com/Foxboron/sbctl)         | 0.18    | bookworm, trixie                  | Secure Boot key manager            |
+| [tzpfms](https://git.sr.ht/~nabijaczleweli/tzpfms) | v0.4.1  | bookworm, trixie, noble, resolute | TPM-backed encryption keys for ZFS |
 
 ## Using the repository
 
@@ -23,7 +23,15 @@ sudo curl -fsSL https://vibornoff.github.io/par/pubkey.asc \
 
 ### 2. Add the sources
 
-Replace `<codename>` with your distro codename (`bookworm`, `noble`, or `resolute`).
+Replace `<codename>` with your distro codename (`bookworm`, `trixie`, `noble`, or `resolute`).
+
+tzpfms links against libzfs, so pick the codename that matches the host's OpenZFS: e.g. the `resolute`
+build needs `libzfs7linux` (OpenZFS 2.4) and does not install on trixie (2.3, `libzfs6linux`). The binaries
+link the exact soname (`libzfs.so.6` or `.so.7`), so an alternative `libzfs7linux | libzfs6linux` dependency
+would install a binary that cannot start. The two libraries cannot be co-installed either: both ship
+`libzfs_core.so.3`, and `libzfs7linux` Breaks/Replaces `libzfs6linux`. A trixie host moving to OpenZFS 2.4
+from trixie-backports needs tzpfms rebuilt against it, switched in the same apt transaction: otherwise apt
+removes either tzpfms or zfsutils-linux.
 
 ```sh
 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/vibornoff.asc] \
@@ -31,9 +39,9 @@ https://vibornoff.github.io/par/ <codename> main" \
 | sudo tee /etc/apt/sources.list.d/vibornoff.list
 ```
 
-> **Note — sbctl on Ubuntu:** `sbctl` is built on `bookworm` (no hard dependency
-> on system libraries). To install it on `noble` or `resolute`, add a `bookworm`
-> line alongside your Ubuntu line:
+> **Note — sbctl on Ubuntu:** `sbctl` is built on `bookworm` (the only shared
+> library it links is `libpcsclite.so.1`, from `libpcsclite1`). To install it on
+> `noble` or `resolute`, add a `bookworm` line alongside your Ubuntu line:
 >
 > ```sh
 > echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/vibornoff.asc] \
@@ -60,10 +68,12 @@ packages/               upstream sources (git submodules / worktrees)
 build/                  Docker build contexts
   sbctl/
     bookworm/Dockerfile
+    trixie/Dockerfile
     entrypoint.sh       creates matching uid/gid inside the container
     build-pkg.sh        make install → staging tree → dpkg-deb
   tzpfms/
     bookworm/Dockerfile
+    trixie/Dockerfile
     noble/Dockerfile
     resolute/Dockerfile
     entrypoint.sh
@@ -84,8 +94,12 @@ repo/                   apt repository root (published on GitHub Pages)
 Requires Docker and Bash.
 
 ```sh
-# sbctl for Debian bookworm
+# sbctl for Debian bookworm / trixie
 scripts/build.sh sbctl/0.18 bookworm
+scripts/build.sh sbctl/0.18 trixie
+
+# tzpfms for Debian trixie
+scripts/build.sh --deb-version-suffix=vibornoff tzpfms/v0.4.1 trixie
 
 # tzpfms for Ubuntu noble
 scripts/build.sh tzpfms/v0.4.1 noble
@@ -97,14 +111,14 @@ scripts/build.sh tzpfms/v0.4.1 resolute
 Output `.deb` files land in `repo/pool/<os>/`.
 
 Pass `--deb-version-suffix=<suffix>` to override the local build suffix (default
-`local`). Currently published builds use `local`:
+`local`). Published tzpfms builds use `vibornoff`:
 
 ```sh
-scripts/build.sh tzpfms/v0.4.1 noble
+scripts/build.sh --deb-version-suffix=vibornoff tzpfms/v0.4.1 noble
 ```
 
 Version scheme: `<upstream_version>+<suffix>1`
-(e.g. `0.4.1-1+local1`) — always greater than the upstream Debian package
+(e.g. `0.4.1-1+vibornoff1`) — always greater than the upstream Debian package
 (`0.4.1-1`) but less than the next upstream release (`0.4.2-1`), so `apt upgrade`
 will replace this build automatically when a newer upstream version appears.
 

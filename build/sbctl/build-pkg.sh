@@ -26,7 +26,7 @@ Version: ${PKG_VERSION}
 Section: admin
 Priority: optional
 Architecture: ${ARCH}
-Depends: binutils, util-linux
+Depends: binutils, util-linux, libpcsclite1
 Maintainer: automated build <build@localhost>
 Description: Secure Boot key manager
  sbctl is a user-friendly secure boot key manager capable of setting up secure
