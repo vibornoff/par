@@ -1,0 +1,47 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: trixie
+Components: main
+Date: Sat, 17 Oct 2026 23:20:51 +0000
+Description: Personal APT Repository – trixie
+Label: personal
+Origin: Personal APT Repository
+Suite: trixie
+MD5Sum:
+ beb8c5e383d2e08e44487db0e2b832fd              203 Release
+ ded6b7c9409d62b7647a8c23b8c1e9ac             5047 main/binary-amd64/Packages
+ c531361fa82cdbbea3b447dde7ac094e             2075 main/binary-amd64/Packages.bz2
+ cbd01334acad585b97d0035bf0249240             1945 main/binary-amd64/Packages.gz
+SHA1:
+ 491f1e3ad317ed78f3efdfd7be658af3781905a3              203 Release
+ 90066fdcd80a931a4814c1145039ed603089e361             5047 main/binary-amd64/Packages
+ fa8178150c689dc62fabe1b49c48d66cd2ceeb03             2075 main/binary-amd64/Packages.bz2
+ 7533d32dfd1b8a95a3ab007a6c8bcb1830f48ac0             1945 main/binary-amd64/Packages.gz
+SHA256:
+ eaaf1245f769e2c4bd2f814ee4ce241fd8f2503e44990d7f115ce7f666d43096              203 Release
+ 3a3fa6b081ce03f367df59912822f341a15a7e124017c8b2d9796e73e128053c             5047 main/binary-amd64/Packages
+ d6b371c7e3e607a494ccf29fbc25eb3e4744eb9502f5243556fe05b3dc074ff3             2075 main/binary-amd64/Packages.bz2
+ 45282d8ea555812d4232e23dba63f2a7a75cf188f0dcd13f53861346f34da9e3             1945 main/binary-amd64/Packages.gz
+SHA512:
+ ddc7733d92d064a3fc4da85f5478d9cf8b18d3d23877587097f026961e73eaff3f1d983b9d6ed58e4abb2839e42cb214f26ac57f7b10e1efb770be43bf5de332              203 Release
+ 25488242bf7f94a32b0f861889d550711b2409ce5be761da0ca78b76545e3e9f397cb58f6e8a20c5ee95c7020a8a7cec34aa8bfc21d10158feada7356a0e6b43             5047 main/binary-amd64/Packages
+ 5e635b650bd5514544524df2dd52e383ff2c75d07ba9d5415cb629c509d86e47585464a8992ac0723bd6768271f78178d1e9a5976b7b4623c183b9c8c45e842e             2075 main/binary-amd64/Packages.bz2
+ 391ca350bed6d3c693ad39b284696bd5814f0151f7de89870a176e96c81d8a7cca2e674a9996e8670899bf3dcf0a3f6d53efc5980602507f91929f8cdcd95839             1945 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEUkDD+Qvia2d4y8AamyuDjrPzDY8FAmrUAtMACgkQmyuDjrPz
+DY+HIhAAigDW9Mur1/A8MDNfIdX2bq+EVIABGlRoXIqB3rdSfJI0FpK1YO9Tket0
+1OQhjTUf7hClZGoK4des83NgF0qyTUcszQk3IqqY3B+WkdDu6t9BC7udWt+CQtGr
+va0nE8OQHrdYsPrF2xY6pignZvKhJH6VlR7fejo5I9IjPA2A96iEfr65QsT8GtfP
+04Mk12OoBiRBe1FfJ9OD1nWTbRV9+zEwY8Gj3xHb7WFkF/TOKLpuIDRUhf0nkLY5
+2TysEikYH0ICdHpw3CMkliE7A76/pjOfLhoPSmhuVDK/4KEVdyXawIofADjlxUOI
+PpuKchRLtOwDdilgajuYc7giSsemVayZTSuiy20eNNvrniecjTXTUfGFfbJFQAF5
+oiUqilVEVSi6ejAb1VNP3rttowF+JFs8Six+W18kgK7mCjSBYBLJAKzTcSC930O9
+uGaK/xwIEINbk6C4kIKrW0df59+1o8OpXTpgudmdeX1AEXBxrQz8/Nj7G3ZuqO55
+yVefRsunNqUe9e3alxXHW3NuclX0fQqK3t/8B6Av+43Lgs8qArtur3xVGGuDTdoi
+eQHVdz8J1ISPE3LzdEyOmO4ziiaI1TOod5l4sqldk8tXZSHkZfFphTEmJE7ab8bz
+OrpPO66NqgCRas4LtIPjRWht9sCimy9Pk4Vr7H+pB28+UiyK3jk=
+=YO5C
+-----END PGP SIGNATURE-----
