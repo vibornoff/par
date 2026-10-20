@@ -1,3 +1,26 @@
+Package: amneziawg-tools
+Architecture: amd64
+Version: 3.1.20260812-1+vibornoff1
+Priority: optional
+Section: net
+Maintainer: automated build <build@localhost>
+Installed-Size: 49
+Depends: libc6 (>= 2.38)
+Recommends: nftables | iptables
+Suggests: openresolv | resolvconf
+Filename: pool/trixie/amneziawg-tools_3.1.20260812-1+vibornoff1_amd64.deb
+Size: 61068
+MD5sum: 3791db22453d7b443df767b78d93c477
+SHA1: a7ce7e4b9c2975ed826ff1914d3934fe0aa1e170
+SHA256: c317d572a83b08916e846618fe3c8b3b5c2365bd40e2373f7ea992d52362c5b2
+SHA512: 2daabfbaa4b8f564cfba1cb4b273a211bfd5a78cef1481c14a08715c0f51f41d99c835c648eba426487d57162569385ba447b546b4b90131c88cec4c293f0548
+Homepage: https://github.com/amnezia-vpn/amneziawg-tools
+Description: AmneziaWG VPN tunnel (userland utilities)
+ AmneziaWG is a fork of WireGuard with traffic obfuscation against DPI.
+ This package provides awg (configure AmneziaWG interfaces), awg-quick and
+ the awg-quick@.service systemd unit. The kernel module (amneziawg-dkms) is
+ not included.
+
 Package: sbctl
 Architecture: amd64
 Version: 0.18
