@@ -7,3 +7,6 @@
 [submodule "amneziawg-tools/v3.1.20260812"]
 	path = packages/amneziawg-tools/v3.1.20260812
 	url = https://github.com/amnezia-vpn/amneziawg-tools.git
+[submodule "amneziawg-dkms/v3.1.20260906"]
+	path = packages/amneziawg-dkms/v3.1.20260906
+	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git

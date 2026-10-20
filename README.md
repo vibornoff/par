@@ -8,6 +8,7 @@ Pages.
 
 | Package                                                                  | Version        | Distros                           | Upstream                                          |
 | ------------------------------------------------------------------------ | -------------- | --------------------------------- | ------------------------------------------------- |
+| [amneziawg-dkms](https://github.com/amnezia-vpn/amneziawg-linux-kernel-module) | v3.1.20260906 | bookworm, trixie            | AmneziaWG kernel module (DKMS)                    |
 | [amneziawg-tools](https://github.com/amnezia-vpn/amneziawg-tools)        | v3.1.20260812  | bookworm, trixie                  | AmneziaWG userland tools (`awg`, `awg-quick`)     |
 | [sbctl](https://github.com/Foxboron/sbctl)                               | 0.18           | bookworm, trixie                  | Secure Boot key manager                           |
 | [tzpfms](https://git.sr.ht/~nabijaczleweli/tzpfms)                       | v0.4.1         | bookworm, trixie, noble, resolute | TPM-backed encryption keys for ZFS                |
@@ -58,7 +59,7 @@ sudo apt install sbctl
 # or
 sudo apt install tzpfms-tpm2 tzpfms-common tzpfms-initramfs
 # or
-sudo apt install amneziawg-tools
+sudo apt install amneziawg-tools amneziawg-dkms
 ```
 
 > **Note — amneziawg-tools:** the package carries only the userland tools and
@@ -67,15 +68,39 @@ sudo apt install amneziawg-tools
 > replaces the unowned files, and `/etc/amnezia/amneziawg` with its configs is
 > kept (also on purge). Upgrades do not restart `awg-quick@` instances.
 
+> **Note — amneziawg-dkms:** the DKMS module version is the upstream release
+> (`amneziawg/3.1.20260906`, sources in `/usr/src/amneziawg-3.1.20260906`):
+> upstream `dkms.conf` says `1.0.0` for every release. DKMS builds the module
+> for every installed kernel with headers (`linux-headers-amd64`). The running
+> module is not reloaded; the new one is used after a reboot.
+>
+> A module previously installed from source with `make dkms-install` is
+> registered as `amneziawg/1.0.0` and reports the same module version, so DKMS
+> refuses to install over it (trixie: postinst fails; bookworm: both versions
+> stay half-installed, and purge leaves no module). Remove it first; the loaded
+> module keeps working:
+>
+> ```sh
+> sudo dkms remove amneziawg/1.0.0 --all
+> sudo rm -rf /usr/src/amneziawg-1.0.0
+> sudo apt install amneziawg-dkms
+> ```
+
 ## Repository structure
 
 ```
 packages/               upstream sources (git submodules / worktrees)
+  amneziawg-dkms/v3.1.20260906/
   amneziawg-tools/v3.1.20260812/
   sbctl/0.18/
   tzpfms/v0.4.1/
 
 build/                  Docker build contexts
+  amneziawg-dkms/
+    bookworm/Dockerfile
+    trixie/Dockerfile
+    entrypoint.sh
+    build-pkg.sh        make dkms-install → staging tree → dpkg-deb (maintainer scripts from dh_dkms templates)
   amneziawg-tools/
     bookworm/Dockerfile
     trixie/Dockerfile
@@ -109,6 +134,10 @@ repo/                   apt repository root (published on GitHub Pages)
 Requires Docker and Bash.
 
 ```sh
+# amneziawg-dkms for Debian bookworm / trixie
+scripts/build.sh --deb-version-suffix=vibornoff amneziawg-dkms/v3.1.20260906 bookworm
+scripts/build.sh --deb-version-suffix=vibornoff amneziawg-dkms/v3.1.20260906 trixie
+
 # amneziawg-tools for Debian bookworm / trixie
 scripts/build.sh --deb-version-suffix=vibornoff amneziawg-tools/v3.1.20260812 bookworm
 scripts/build.sh --deb-version-suffix=vibornoff amneziawg-tools/v3.1.20260812 trixie
@@ -130,7 +159,7 @@ scripts/build.sh tzpfms/v0.4.1 resolute
 Output `.deb` files land in `repo/pool/<os>/`.
 
 Pass `--deb-version-suffix=<suffix>` to override the local build suffix (default
-`local`). Published tzpfms and amneziawg-tools builds use `vibornoff`:
+`local`). Published tzpfms and amneziawg builds use `vibornoff`:
 
 ```sh
 scripts/build.sh --deb-version-suffix=vibornoff tzpfms/v0.4.1 noble
