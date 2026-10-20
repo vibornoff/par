@@ -6,10 +6,11 @@ Pages.
 
 ## Contents
 
-| Package                                            | Version | Distros                           | Upstream                           |
-| -------------------------------------------------- | ------- | --------------------------------- | ---------------------------------- |
-| [sbctl](https://github.com/Foxboron/sbctl)         | 0.18    | bookworm, trixie                  | Secure Boot key manager            |
-| [tzpfms](https://git.sr.ht/~nabijaczleweli/tzpfms) | v0.4.1  | bookworm, trixie, noble, resolute | TPM-backed encryption keys for ZFS |
+| Package                                                                  | Version        | Distros                           | Upstream                                          |
+| ------------------------------------------------------------------------ | -------------- | --------------------------------- | ------------------------------------------------- |
+| [amneziawg-tools](https://github.com/amnezia-vpn/amneziawg-tools)        | v3.1.20260812  | bookworm, trixie                  | AmneziaWG userland tools (`awg`, `awg-quick`)     |
+| [sbctl](https://github.com/Foxboron/sbctl)                               | 0.18           | bookworm, trixie                  | Secure Boot key manager                           |
+| [tzpfms](https://git.sr.ht/~nabijaczleweli/tzpfms)                       | v0.4.1         | bookworm, trixie, noble, resolute | TPM-backed encryption keys for ZFS                |
 
 ## Using the repository
 
@@ -56,16 +57,30 @@ sudo apt update
 sudo apt install sbctl
 # or
 sudo apt install tzpfms-tpm2 tzpfms-common tzpfms-initramfs
+# or
+sudo apt install amneziawg-tools
 ```
+
+> **Note — amneziawg-tools:** the package carries only the userland tools and
+> the `awg-quick@.service` unit; the kernel module (`amneziawg-dkms`) is not in
+> PAR. It installs over a previous `make install` of the same tools: dpkg
+> replaces the unowned files, and `/etc/amnezia/amneziawg` with its configs is
+> kept (also on purge). Upgrades do not restart `awg-quick@` instances.
 
 ## Repository structure
 
 ```
 packages/               upstream sources (git submodules / worktrees)
+  amneziawg-tools/v3.1.20260812/
   sbctl/0.18/
   tzpfms/v0.4.1/
 
 build/                  Docker build contexts
+  amneziawg-tools/
+    bookworm/Dockerfile
+    trixie/Dockerfile
+    entrypoint.sh
+    build-pkg.sh        make install → staging tree → dpkg-deb (Depends via dpkg-shlibdeps)
   sbctl/
     bookworm/Dockerfile
     trixie/Dockerfile
@@ -94,6 +109,10 @@ repo/                   apt repository root (published on GitHub Pages)
 Requires Docker and Bash.
 
 ```sh
+# amneziawg-tools for Debian bookworm / trixie
+scripts/build.sh --deb-version-suffix=vibornoff amneziawg-tools/v3.1.20260812 bookworm
+scripts/build.sh --deb-version-suffix=vibornoff amneziawg-tools/v3.1.20260812 trixie
+
 # sbctl for Debian bookworm / trixie
 scripts/build.sh sbctl/0.18 bookworm
 scripts/build.sh sbctl/0.18 trixie
@@ -111,7 +130,7 @@ scripts/build.sh tzpfms/v0.4.1 resolute
 Output `.deb` files land in `repo/pool/<os>/`.
 
 Pass `--deb-version-suffix=<suffix>` to override the local build suffix (default
-`local`). Published tzpfms builds use `vibornoff`:
+`local`). Published tzpfms and amneziawg-tools builds use `vibornoff`:
 
 ```sh
 scripts/build.sh --deb-version-suffix=vibornoff tzpfms/v0.4.1 noble

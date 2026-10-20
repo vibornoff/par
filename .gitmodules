@@ -4,3 +4,6 @@
 [submodule "tzpfms/v0.4.1"]
 	path = packages/tzpfms/v0.4.1
 	url = https://git.sr.ht/~nabijaczleweli/tzpfms
+[submodule "amneziawg-tools/v3.1.20260812"]
+	path = packages/amneziawg-tools/v3.1.20260812
+	url = https://github.com/amnezia-vpn/amneziawg-tools.git
