@@ -1,3 +1,24 @@
+Package: amneziawg-dkms
+Architecture: all
+Version: 3.1.20260906-1+vibornoff1
+Priority: optional
+Section: kernel
+Maintainer: automated build <build@localhost>
+Installed-Size: 193
+Depends: dkms (>= 2.1.0.0)
+Recommends: amneziawg-tools
+Filename: pool/bookworm/amneziawg-dkms_3.1.20260906-1+vibornoff1_all.deb
+Size: 259612
+MD5sum: 05f37ce3d36460b9c497b7db62627a50
+SHA1: bf0abc6d048cf7c4b7e9ee4358d0018f767a14e5
+SHA256: 549e3a490d89c8a5b569aa42738eca942d504b4a81d6f297a35d3ea5510ea923
+SHA512: 44f323c4fc4b8159a29ae4e203d6d5b8d893ee8d771305ea906d5e07f2d3c1c072d8a4939be685f61c2b79007c8f5c95b61b118723d7899d060021231d283ba5
+Homepage: https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
+Description: AmneziaWG VPN tunnel (DKMS kernel module)
+ AmneziaWG is a fork of WireGuard with traffic obfuscation against DPI.
+ This package provides the source of the amneziawg kernel module; DKMS builds
+ it for every installed kernel that has headers.
+
 Package: amneziawg-tools
 Architecture: amd64
 Version: 3.1.20260812-1+vibornoff1
