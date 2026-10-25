@@ -19,12 +19,17 @@ set -euo pipefail
 
 # ── Argument parsing ──────────────────────────────────────────────────────────
 DEB_VERSION_SUFFIX="local"
+# Debian revision; empty keeps build-pkg.sh's default 1+<suffix>1
+PKG_REVISION=""
 
 args=()
 for arg in "$@"; do
     case "$arg" in
         --deb-version-suffix=*)
             DEB_VERSION_SUFFIX="${arg#*=}"
+            ;;
+        --pkg-revision=*)
+            PKG_REVISION="${arg#*=}"
             ;;
         *)
             args+=("$arg")
@@ -34,7 +39,7 @@ done
 set -- "${args[@]}"
 
 if [[ $# -ne 2 ]]; then
-    echo "Usage: $0 [--deb-version-suffix=SUFFIX] <package>/<version> <os>" >&2
+    echo "Usage: $0 [--deb-version-suffix=SUFFIX] [--pkg-revision=REV] <package>/<version> <os>" >&2
     echo "  e.g. $0 sbctl/0.18 bookworm" >&2
     echo "  e.g. $0 --deb-version-suffix=artyrepo tzpfms/v0.4.1 noble" >&2
     exit 1
@@ -89,6 +94,7 @@ docker run --rm \
     --env BUILD_GID="$(id -g)" \
     --env PKG_VERSION="${PKG_VERSION}" \
     --env DEB_VERSION_SUFFIX="${DEB_VERSION_SUFFIX}" \
+    --env PKG_REVISION="${PKG_REVISION}" \
     --env SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH}" \
     --volume "${SOURCE_DIR}:/workspace/${PKG_NAME}" \
     --volume "${OUTPUT_DIR}:/out" \

@@ -135,6 +135,11 @@ Maintainer: automated build <build@localhost>
 Description: TPM-based encryption keys for ZFS datasets -- initramfs-tools integration
  initramfs-tools hooks for tzpfms, enabling ZFS-on-root early-boot key loading.
 EOF
+# Rebuild the initramfs on install/upgrade so the hook takes effect, as upstream's
+# package does (dh_installinitramfs). Without it the hook only lands in the initramfs
+# at the next kernel update. The trigger runs `update-initramfs -u`: newest kernel only
+# unless update_initramfs=all.
+echo "activate-noawait update-initramfs" > "$S/DEBIAN/triggers"
 build_deb "$S" "tzpfms-initramfs_${DEB_VERSION}_all.deb"
 
 # ── tzpfms-dracut ─────────────────────────────────────────────────────────────

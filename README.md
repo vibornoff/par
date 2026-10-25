@@ -170,6 +170,21 @@ Version scheme: `<upstream_version>+<suffix>1`
 (`0.4.1-1`) but less than the next upstream release (`0.4.2-1`), so `apt upgrade`
 will replace this build automatically when a newer upstream version appears.
 
+A packaging fix without a new upstream version bumps the trailing number, so that
+clients get the rebuilt package: pass the whole revision with `--pkg-revision`
+(default `1+<suffix>1`):
+
+```sh
+scripts/build.sh --deb-version-suffix=vibornoff --pkg-revision=1+vibornoff2 tzpfms/v0.4.1 trixie
+```
+
+- tzpfms `1+vibornoff2` (2026-10-25): `tzpfms-initramfs` activates the
+  `update-initramfs` trigger, as the upstream package does (`dh_installinitramfs`).
+  `1+vibornoff1` had none, so the hook reached the initramfs only at the next kernel
+  update. The trigger runs `update-initramfs -u`, which rebuilds the newest kernel's
+  initramfs only (unless `update_initramfs=all`); after the first install run
+  `update-initramfs -u -k all` to cover the older kernels too.
+
 ## Generating and signing repository metadata
 
 ```sh
